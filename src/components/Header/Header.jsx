@@ -3,9 +3,11 @@ import {
   AppBar,
   Box,
   IconButton,
+  ListItem,
   Menu,
   MenuItem,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import './Header.scss';
 import { Container } from '@mui/system';
@@ -18,7 +20,6 @@ import RightBarContents from '../SideDrawer/RightBarContents';
 const Header = (props) => {
   const HEADER_HEIGHT = 60;
   const theme = useContext(AppTheme);
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -62,10 +63,20 @@ const Header = (props) => {
               component='div'
             >
               {props.children}
-              <Typography variant='h4'>Timer</Typography>
+              <Typography variant='h4'>
+                Core Timer
+                <Typography variant='caption' fontFamily='monospace'>
+                  (beta 0.8){' '}
+                </Typography>
+              </Typography>
             </Box>
             <Box sx={{}} component='div'>
               <IconButton
+                sx={{
+                  display: {
+                    md: 'none',
+                  },
+                }}
                 id='basic-button'
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup='true'
@@ -88,7 +99,7 @@ const Header = (props) => {
         >
           <MenuItem
             disableRipple
-            sx={{ ':hover': { background: 'none' }, pb: 0 }}
+            sx={{ ':hover': { background: 'none' }, p: 0 }}
           >
             <RightBarContents mobileMode={true} />
           </MenuItem>

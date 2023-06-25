@@ -2,11 +2,14 @@ import {
   Box,
   Container,
   Divider,
+  IconButton,
+  Link,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Modal,
   Slider,
   Stack,
   Switch,
@@ -16,7 +19,16 @@ import {
 import React, { Children, useContext, useEffect, useState } from 'react';
 import useLocalStorage from '../../Utils/useLocalStorage';
 import { TimeConfig } from '../../Utils/GlobalConfig';
-import { AccessTime, AvTimer, Timelapse, VolumeUp } from '@mui/icons-material';
+import {
+  AccessTime,
+  AvTimer,
+  Code,
+  Facebook,
+  GitHub,
+  Info,
+  Timelapse,
+  VolumeUp,
+} from '@mui/icons-material';
 
 const RightBarContents = ({ mobileMode }) => {
   const listButtonStyle = {
@@ -52,13 +64,15 @@ const RightBarContents = ({ mobileMode }) => {
   const changeIntervalDuration = (event) => {
     setConfig({ ...getConfig, intervalDuration: intervalDuration });
   };
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div>
       {mobileMode ? '' : <Toolbar />}
       <Box sx={{ m: 1 }}>
         <List>
-          <Divider />
+          {mobileMode ? '' : <Divider />}
+
           <ListItemButton
             disableRipple
             onClick={changeIntervalMode}
@@ -67,7 +81,7 @@ const RightBarContents = ({ mobileMode }) => {
             <AccessTime sx={iconStyle} />
 
             <ListItemText
-              primary='Delay timer'
+              primary='Intervals '
               primaryTypographyProps={listTextStyle}
             />
             <Switch checked={intervalMode} edge='end' />
@@ -91,7 +105,7 @@ const RightBarContents = ({ mobileMode }) => {
                     fontSize: '1.25rem',
                     color: !intervalMode && 'grey',
                   }}
-                  primary='Interval'
+                  primary='Interval Duration'
                 />
               </Stack>
               <Slider
@@ -121,8 +135,59 @@ const RightBarContents = ({ mobileMode }) => {
             />
             <Switch checked={getAudioMode} edge='end' />
           </ListItemButton>
-          <Divider />
+          <ListItemButton
+            sx={listButtonStyle}
+            onClick={() => setModalOpen(true)}
+          >
+            <Info sx={iconStyle} />
+            <ListItemText
+              primary='About'
+              primaryTypographyProps={listTextStyle}
+            />
+          </ListItemButton>
+          {mobileMode ? '' : <Divider />}
         </List>
+        <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 400,
+              bgcolor: 'background.paper',
+              borderRadius: '1rem',
+              boxShadow: 24,
+              p: 4,
+            }}
+          >
+            <Typography variant='h5'>About</Typography>
+            <Typography variant='body'>
+              A hobby project which may be useful to some people. To know more,
+              you may visit:
+            </Typography>
+            <Stack
+              direction='row'
+              justifyContent='center'
+              alignItems='center'
+              columnGap={2}
+              sx={{ m: 2 }}
+            >
+              <IconButton
+                onClick={() => window.open('https://github.com/Towhidkarim/')}
+              >
+                <GitHub fontSize='large' />
+              </IconButton>
+              <IconButton
+                onClick={() =>
+                  window.open('https://facebook.com/towhid.karim.1')
+                }
+              >
+                <Facebook fontSize='large' />
+              </IconButton>
+            </Stack>
+          </Box>
+        </Modal>
       </Box>
     </div>
   );
