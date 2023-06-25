@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.body {
+    height: 100dvh;
+    backdrop-filter: blur(10px);
+    background-color: white ;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: flex-start;
+    border: 1px solid black;
+}
+.grid-item-menu {
+    width: 20%;
+    height: 100vh;
+    border-right: 1px solid rgba(128, 128, 128, 0.392);
+}
+.grid-item-body {
+    width: 60%;
+}
+.app-container {
+    height: fit-content;
+    gap: 0;
+    border: 5px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    
+    
+}

@@ -1,0 +1,46 @@
+.timer-box {
+    border: 1px solid black;
+    width: 40%;
+    height: 60vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.timer-circle-svg {
+  height: 260px;                            // 2 times radius + stroke; 2(120 + 10)
+  transform: rotate(-90deg) scaleY(-1);
+}
+.test {
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+}
+.timer-circle {
+  background: transparent;
+  fill: none;
+  stroke-width: 10px;
+  stroke: #101820;
+   // transform: scaleX(-1);
+    stroke-dasharray: 700 754;                  // 2 * PI * r ; r = 120   
+}
+.timer-innerCircle {
+    background: transparent;
+    fill:none;
+    stroke: #101820;
+    stroke-width: 2px
+    
+}
+
+.timer-text {
+    font-weight: 200;
+    color: purple;
+    font-size: 6rem;
+    position: absolute;
+    display: block;
+    top: 52.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}

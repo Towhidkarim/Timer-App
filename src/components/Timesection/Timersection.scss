@@ -1,0 +1,36 @@
+.pulse-animation {
+    display: inline-block;
+    height: 275px;
+    width: 275px;
+    margin: 0;
+    background-color: #673ab7;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+    z-index: -10;
+    animation: pulse 1s ease-out infinite;
+    
+}
+.pulse-animation::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    height: 275px;
+    width: 275px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 1;
+}
+.section-container {
+    display: flex;
+    position: relative;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
