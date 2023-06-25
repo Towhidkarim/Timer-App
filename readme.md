@@ -20,7 +20,7 @@ A Custom Timer application made with ReactJs and the Material UI framework.
 
 ## Demo
 
-(Will be updated soon)
+[Link here](https://core-timer.netlify.app/)
 
 
 ## 🚀 About Me
